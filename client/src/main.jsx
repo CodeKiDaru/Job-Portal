@@ -3,9 +3,12 @@ import './index.css'
 import App from './App.jsx'
 import { AppContextProvider } from './context/AppContext.jsx'
 AppContextProvider
+import { BrowserRouter } from "react-router";
 
 createRoot(document.getElementById('root')).render(
-  <AppContextProvider>
-    <App />
-  </AppContextProvider>,
+  <BrowserRouter>
+    <AppContextProvider>
+      <App />
+    </AppContextProvider>
+  </BrowserRouter>
 )
