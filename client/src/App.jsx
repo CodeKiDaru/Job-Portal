@@ -12,6 +12,7 @@ function App() {
 
       <Navbar />
 
+      <button className="btn btn-neutral">Neutral</button>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/applications" element={<Applications />} />
