@@ -1,16 +1,20 @@
-import React from 'react'
 import { LuBriefcaseBusiness } from "react-icons/lu";
+import { Show, SignInButton, UserButton, useSignIn, useUser } from '@clerk/react'
 
 const Navbar = () => {
+
+  const data = useUser();
+  console.log(data)
+
   return (
     <>
-     
+
       <div className="navbar bg-base-100 shadow-sm">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">
-             <LuBriefcaseBusiness />
+            <LuBriefcaseBusiness />
             Naukar
-            </a>
+          </a>
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
@@ -24,9 +28,19 @@ const Navbar = () => {
                 </ul>
               </details>
             </li>
-            <button className="btn btn-active btn-neutral">Login</button>
+
+            <Show when="signed-out">
+              <SignInButton mode="modal">
+                <button className="btn btn-active btn-neutral">Login</button>
+              </SignInButton>
+            </Show>
+
+            <Show when="signed-in">
+              <UserButton />
+            </Show>
           </ul>
         </div>
+        <SignInButton/>
       </div>
     </>
   )
